@@ -1,4 +1,4 @@
-
+"use Client"
 import { Spotlight } from './ui/Spotlight'
 
 const Hero = () => {
