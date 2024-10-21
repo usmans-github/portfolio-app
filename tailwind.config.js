@@ -1,5 +1,4 @@
 import svgToDataUri from "mini-svg-data-uri";
-
 import colors from "tailwindcss/colors";
 import flattenColorPalette from "tailwindcss/lib/util/flattenColorPalette";
 
@@ -78,6 +77,14 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        meteor: {
+          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
+          "70%": { opacity: "1" },
+          "100%": {
+            transform: "rotate(215deg) translateX(-500px)",
+            opacity: "0",
+          },
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -142,18 +149,9 @@ const config = {
             transform: "translate(calc(-50% - 0.5rem))",
           },
         },
-        meteor: {
-          "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
-          "70%": { opacity: "1" },
-          "100%": {
-            transform: "rotate(215deg) translateX(-500px)",
-            opacity: "0",
-          },
-        },
       },
-      
       animation: {
-        "meteor-effect": "meteor 8s linear infinite",
+        "meteor-effect": "meteor 5s linear infinite",
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         spotlight: "spotlight 2s ease .75s 1 forwards",
@@ -163,17 +161,10 @@ const config = {
         third: "moveInCircle 40s linear infinite",
         fourth: "moveHorizontal 40s ease infinite",
         fifth: "moveInCircle 20s ease infinite",
-        scroll:
-          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
-          
+        scroll: "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
       },
-      
-      
     },
-   
-    
   },
-  
   plugins: [
     require("tailwindcss-animate"),
     addVariablesForColors,
@@ -192,7 +183,7 @@ const config = {
           }),
           "bg-dot": (value) => ({
             backgroundImage: `url("${svgToDataUri(
-              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="1.6257413380501518"></circle></svg>`
+              `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 32 0 32" width="16" height="16" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="1.6257413380501518"></circle></svg>`
             )}")`,
           }),
         },
@@ -207,7 +198,6 @@ function addVariablesForColors({ addBase, theme }) {
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
-
   addBase({
     ":root": newVars,
   });
