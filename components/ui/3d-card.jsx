@@ -1,126 +1,72 @@
-"use client";;
+"use client";
+import React, { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import React, {
-  createContext,
-  useState,
-  useContext,
-  useRef,
-  useEffect,
-} from "react";
+import Link from "next/link";
 
-const MouseEnterContext = createContext(undefined);
-
-export const CardContainer = ({
+export const Combined3DCard = ({
   children,
+  title,
+  href,
   className,
-  containerClassName
+  containerClassName,
 }) => {
   const containerRef = useRef(null);
-  const [isMouseEntered, setIsMouseEntered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e) => {
     if (!containerRef.current) return;
-    const { left, top, width, height } =
-      containerRef.current.getBoundingClientRect();
+    const { left, top, width, height } = containerRef.current.getBoundingClientRect();
     const x = (e.clientX - left - width / 2) / 25;
     const y = (e.clientY - top - height / 2) / 25;
     containerRef.current.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
   };
 
-  const handleMouseEnter = (e) => {
-    setIsMouseEntered(true);
-    if (!containerRef.current) return;
+  const handleMouseEnter = () => {
+    setIsHovered(true);
   };
 
-  const handleMouseLeave = (e) => {
-    if (!containerRef.current) return;
-    setIsMouseEntered(false);
-    containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
-  };
-  return (
-    (<MouseEnterContext.Provider value={[isMouseEntered, setIsMouseEntered]}>
-      <div
-        className={cn("py-20 flex items-center justify-center", containerClassName)}
-        style={{
-          perspective: "1000px",
-        }}>
-        <div
-          ref={containerRef}
-          onMouseEnter={handleMouseEnter}
-          onMouseMove={handleMouseMove}
-          onMouseLeave={handleMouseLeave}
-          className={cn(
-            "flex items-center justify-center relative transition-all duration-200 ease-linear",
-            className
-          )}
-          style={{
-            transformStyle: "preserve-3d",
-          }}>
-          {children}
-        </div>
-      </div>
-    </MouseEnterContext.Provider>)
-  );
-};
-
-export const CardBody = ({
-  children,
-  className
-}) => {
-  return (
-    (<div
-      className={cn(
-        "h-96 w-96 [transform-style:preserve-3d]  [&>*]:[transform-style:preserve-3d]",
-        className
-      )}>
-      {children}
-    </div>)
-  );
-};
-
-export const CardItem = ({
-  as: Tag = "div",
-  children,
-  className,
-  translateX = 0,
-  translateY = 0,
-  translateZ = 0,
-  rotateX = 0,
-  rotateY = 0,
-  rotateZ = 0,
-  ...rest
-}) => {
-  const ref = useRef(null);
-  const [isMouseEntered] = useMouseEnter();
-
-  useEffect(() => {
-    handleAnimations();
-  }, [isMouseEntered]);
-
-  const handleAnimations = () => {
-    if (!ref.current) return;
-    if (isMouseEntered) {
-      ref.current.style.transform = `translateX(${translateX}px) translateY(${translateY}px) translateZ(${translateZ}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg)`;
-    } else {
-      ref.current.style.transform = `translateX(0px) translateY(0px) translateZ(0px) rotateX(0deg) rotateY(0deg) rotateZ(0deg)`;
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    if (containerRef.current) {
+      containerRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
     }
   };
 
   return (
-    (<Tag
-      ref={ref}
-      className={cn("w-fit transition duration-200 ease-linear", className)}
-      {...rest}>
-      {children}
-    </Tag>)
+    <Link
+      className={cn("relative group/pin z-50 cursor-pointer", containerClassName)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      href={href || "/"}
+      target="_blank"
+    >
+      <div
+        className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+        style={{ perspective: "1000px" }}
+      >
+        <motion.div
+          ref={containerRef}
+          onMouseMove={handleMouseMove}
+          className={cn(
+            "p-4 flex justify-start items-start rounded-2xl shadow-md border border-white/10 transition-all duration-200 ease-linear",
+            className
+          )}
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          <div className="relative z-50">{children}</div>
+        </motion.div>
+      </div>
+      {title && (
+        <motion.div
+          className="pointer-events-none w-full h-80 flex items-center justify-center opacity-0 group-hover/pin:opacity-100 z-[60] transition-opacity duration-500"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isHovered ? 1 : 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {title}
+        </motion.div>
+      )}
+    </Link>
   );
-};
-
-// Create a hook to use the context
-export const useMouseEnter = () => {
-  const context = useContext(MouseEnterContext);
-  if (context === undefined) {
-    throw new Error("useMouseEnter must be used within a MouseEnterProvider");
-  }
-  return context;
 };
