@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { ModeToggle } from "../ModeToggle";
 
 export const FloatingNav = ({
   navItems,
@@ -57,14 +58,19 @@ export const FloatingNav = ({
             key={`link=${idx}`}
             href={navItem.link}
             className={cn(
-              "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-purple hover:text-neutral-500 pr-4"
+              "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-purple hover:text-purple  pr-4"
             )}>
             <span className="block sm:hidden">{navItem.icon}</span>
             <span className="!cursor-pointer text-sm">{navItem.name}</span>
           </Link>
         ))}
+        
        
       </motion.div>
+      <div className="toggle absolute z-10 top-8 right-16 ">
+          <ModeToggle />
+          </div>
+     
     </AnimatePresence>)
   );
 };

@@ -28,7 +28,7 @@ export const gridItems = [
     id: 3,
     title: "My tech stack",
     description: "I constantly try to improve",
-    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
+    className: "lg:col-span-2 font-bold md:col-span-3 md:row-span-2",
     imgClassName: "",
     titleClassName: "justify-center",
     img: "",
@@ -204,14 +204,17 @@ export const socialMedia = [
   {
     id: 1,
     img: "/git.svg",
+    link:"https://github.com/usmans-github"
   },
   {
     id: 2,
     img: "/twit.svg",
+    link:"https://x.com/UsmanAl57942357"
   },
   {
     id: 3,
     img: "/link.svg",
+    link:"https://www.linkedin.com/in/m-usman-9ba303307/"
   },
 ];
 

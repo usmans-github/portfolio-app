@@ -21,10 +21,9 @@ const RecentProjects = () => {
               <Combined3DCard  href={project.link}>
                 <div className="relative flex items-center justify-center sm:w-[570px] w-[80vw] overflow-hidden h-[30vh] sm:h-[40vh] mb-10">
                   <div
-                    className="relative w-full h-full overflow-hidden lg:rounded-3xl"
-                    style={{ backgroundColor: "#13162D" }}
+                    className="relative w-full h-full overflow-hidden lg:rounded-3xl bg-[#f9fafb] dark:bg-[#13162D]"
                   >
-                    <img src="/bg.png" alt="bg-img" />
+                   <img src="/bg.png" alt="bg-img" />
                   </div>
                   <img
                     src={project.img}

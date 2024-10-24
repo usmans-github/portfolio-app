@@ -17,7 +17,7 @@ const Skills = () => {
               alt={icon.name}
               className="w-16 h-16 object-cover"
             />
-             <div className="absolute inset-0 bg-gray-200 dark:bg-black-200 opacity-0 hover:opacity-90
+             <div className="absolute inset-0 bg-[#F9FAFB] dark:bg-black-200 opacity-0 hover:opacity-90
               flex items-center justify-center rounded-lg transition-all duration-300">
               <span className="text-sm font-bold uppercase text-gray-800 dark:text-gray-200">
                 {icon.name}
