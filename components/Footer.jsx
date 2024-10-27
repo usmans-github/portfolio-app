@@ -6,7 +6,7 @@ import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <footer className='w-full mb pb-10 mb-[100px] md:mb-8' id='contact'>
+    <footer className='w-full mb pb-10 md:mb-8' id='contact'>
       
       <div className="flex flex-col items-center">
         <h1 className='heading lg:max-w-[45vw]'>
@@ -21,7 +21,7 @@ const Footer = () => {
           />
         </a>
       </div>
-      <div className='flex mt-16 md:flex-row flex-col justify-between items-center '>
+      <div className='flex mt-16 md:flex-row flex-col justify-between items-center gap-8'>
         <p className='md:text-base text-sm md:font-normal font-light'>Copyright © 2024 M Usman. All rights reserved</p>
         <div className="social flex items-center md:gap-3 gap-6">
           {socialMedia.map((profile)=>(

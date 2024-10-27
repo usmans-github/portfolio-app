@@ -100,7 +100,7 @@ export const BentoGridItem = ({
           <BackgroundGradientAnimation /> 
         )}
         <div className={cn(titleClassName, "group-hover/bento:translate-x-2 transition duration-200 relative  md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-8 ")}>
-          <div className="desc font-sans font-medium text-black-100 text-sm md:text-xs lg:text-base z-10 ">
+          <div className="desc font-sans font-medium dark:text-white text-sm md:text-xs lg:text-base z-10 ">
             {description}
           </div>
           <div
