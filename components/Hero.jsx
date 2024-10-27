@@ -33,7 +33,7 @@ const Hero = () => {
           <h1 style={{ lineHeight: "1.2em" }} className=' pt-8 leading-[24px] tracking-tight  text-[40px] md:text-4xl lg:text-5xl text-gray-800 dark:text-white font-bold'>Next.js & <span className='text-purple'> React developer</span>,  and frontend enthusiast.</h1>
 
 
-          <p className=' text-left mt-5 mb-7 text-sm md:text-xl lg:text-base  text-gray-600 dark:text-gray-400 '> I'm Usman, a skilled web developer based in Pakistan with a deep focus on modern technologies like Next.js, React, and Node.js. My expertise with frameworks like Tailwind CSS and UI libraries like shadcn and Aceternity enables me to create fast, responsive websites that deliver a top-notch user experience. I'm passionate about enhancing my skills to build solutions that make a lasting impact.</p>
+          <p className=' text-left mt-5 mb-7 text-sm md:text-xl lg:text-base  text-gray-600 dark:text-gray-400 '> I&apos;m Usman, a skilled web developer based in Pakistan with a deep focus on modern technologies like Next.js, React, and Node.js. My expertise with frameworks like Tailwind CSS and UI libraries like shadcn and Aceternity enables me to create fast, responsive websites that deliver a top-notch user experience. I&apos;m passionate about enhancing my skills to build solutions that make a lasting impact.</p>
           <div className="flex flex-row gap-x-6 text-2xl text-gray-500">
             <Link
               href={"https://www.linkedin.com/in/m-usman-9ba303307/"}
