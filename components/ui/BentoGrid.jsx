@@ -8,7 +8,7 @@ import Lottie from "react-lottie";
 import MagicButton from "./MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
 import { FiDownload } from "react-icons/fi";
-import { Meteors } from "./meteors";
+import { Meteors } from "./Meteors";
 
 export const BentoGrid = ({
   className,
