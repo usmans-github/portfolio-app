@@ -3,6 +3,7 @@ import React from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 import { Combined3DCard } from "./ui/3d-card";
 import { projects } from "@/data";
+import Image from "next/image";
 
 const RecentProjects = () => {
 
@@ -25,9 +26,12 @@ const RecentProjects = () => {
                   >
                    <img src="/bg.png" alt="bg-img" />
                   </div>
-                  <img
+                  <Image
+                    width={600}
+                    height={600}
                     src={project.img}
                     alt={project.title}
+                    style={{objectFit: "cover"}}
                     className="z-10 absolute bottom-0"
                   />
                 </div>
@@ -43,7 +47,7 @@ const RecentProjects = () => {
                     {project.iconLists.map((icon, index) => (
                        <div
                        key={index}
-                       className="border border-white/[.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
+                       className="border border-white/[.2] rounded-full bg-black-100 lg:w-10 lg:h-10 w-8 h-8 flex justify-center items-center"
                        style={{
                          transform: `translateX(-${5 * index * 2}px)`,
                        }}

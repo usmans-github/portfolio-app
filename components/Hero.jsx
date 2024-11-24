@@ -7,6 +7,7 @@ import {
   FaLinkedin,
   FaXTwitter
 } from "react-icons/fa6";
+import { FlipWord } from './ui/FlipWord';
 
 
 const Hero = () => {
@@ -30,7 +31,10 @@ const Hero = () => {
 
           <img className='rounded-full h-16 w-16 object-cover object-center flex items-start' src="/Usman.png" alt="Usman.png" />
 
-          <h1 style={{ lineHeight: "1.2em" }} className=' pt-8 leading-[24px] tracking-tight  text-[40px] md:text-4xl lg:text-5xl text-gray-800 dark:text-white font-bold'>Next.js & <span className='text-purple'> React developer</span>,  and frontend enthusiast.</h1>
+          
+
+          <h1 style={{ lineHeight: "1.2em" }} className=' pt-8 leading-[24px] tracking-tight  text-[40px] md:text-4xl lg:text-5xl text-gray-800 dark:text-white font-bold lg:w-2/3'>Full stack &nbsp;
+          <FlipWord />web developer.</h1>
 
 
           <p className=' text-left mt-5 mb-7 text-sm md:text-xl lg:text-base  text-gray-600 dark:text-gray-400 '> I&apos;m Usman, a skilled web developer based in Pakistan with a deep focus on modern technologies like Next.js, React, and Node.js. My expertise with frameworks like Tailwind CSS and UI libraries like shadcn and Aceternity enables me to create fast, responsive websites that deliver a top-notch user experience. I&apos;m passionate about enhancing my skills to build solutions that make a lasting impact.</p>
